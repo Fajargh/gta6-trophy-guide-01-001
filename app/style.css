@@ -1,0 +1,136 @@
+/* Leonida Trophy Guide — a dark Vice City night look of our own: deep violet
+   and teal with a neon coral accent. No Rockstar art, no external fonts. */
+:root {
+  --bg: #120e1e;
+  --bg2: #1a1428;
+  --panel: #1e1830;
+  --panel2: #251d3a;
+  --line: #3a2f56;
+  --ink: #f2ecff;
+  --muted: #b3a8d4;
+  --faint: #8d81ad;
+  --accent: #ff5c8a;
+  --accent2: #2dd4bf;
+  --gold: #f2c14e;
+  --silver: #c8ccd4;
+  --bronze: #d08a4e;
+  --plat: #7ee0ff;
+  --danger: #ffb454;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #171029 0%, var(--bg) 320px);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--accent2); }
+.hero { padding: 20px 24px 12px; max-width: 1240px; margin: 0 auto; }
+.eyebrow { color: var(--accent2); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; margin: 0 0 4px; font-weight: 700; }
+h1 { margin: 0 0 4px; font-size: 34px; line-height: 1.05; letter-spacing: -.01em; }
+.tagline { margin: 0 0 8px; color: var(--muted); max-width: 760px; font-size: 16px; }
+.facts { margin: 0 0 10px; color: var(--faint); font-size: 13.5px; }
+.progress-wrap { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; }
+.progress-line { display: flex; justify-content: space-between; font-weight: 700; }
+.progress-line #progressPct { color: var(--accent2); }
+.bar { height: 12px; background: #0d0a18; border-radius: 99px; margin: 8px 0 6px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), #ff8a5c); border-radius: 99px; transition: width .3s; }
+.grade-counts { margin: 0; color: var(--muted); font-size: 13.5px; }
+.controls {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  max-width: 1240px; margin: 0 auto; padding: 12px 24px;
+  background: rgba(18, 14, 30, .96); border-bottom: 1px solid var(--line);
+}
+.controls input[type="search"] {
+  flex: 1 1 220px; min-width: 200px; padding: 9px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg2); color: var(--ink); font-size: 15px;
+}
+.kind-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.kind-filters button, .controls button, .import-btn {
+  padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); font-size: 14px; cursor: pointer;
+}
+.kind-filters button.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.controls button:hover, .import-btn:hover { border-color: var(--accent2); }
+.controls button.quiet { background: transparent; color: var(--muted); }
+.controls select {
+  padding: 8px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); font-size: 14px;
+}
+.field, .check { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.import-btn input { display: none; }
+.layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 18px;
+  max-width: 1240px; margin: 0 auto; padding: 18px 24px 8px; align-items: start;
+}
+.list-note { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; }
+.trophy-list { display: grid; gap: 8px; }
+.trophy {
+  display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: start;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px; cursor: pointer;
+}
+.trophy:hover { border-color: var(--accent2); }
+.trophy.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.trophy.earned { border-color: #2f6f5e; background: #1a2430; }
+.trophy.earned .t-name { text-decoration: line-through; text-decoration-thickness: 2px; }
+.trophy input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent2); cursor: pointer; }
+.t-name { font-weight: 700; font-size: 16px; }
+.t-desc { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.t-tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted);
+}
+.tag.missable { color: #1d1200; background: var(--danger); border-color: var(--danger); }
+.tag.unconfirmed { color: #ffd9a0; border-color: var(--danger); }
+.tag.kind-story { color: var(--plat); }
+.tag.kind-collectibles { color: var(--gold); }
+.tag.kind-activities { color: var(--accent2); }
+.grade { font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding: 4px 9px; border-radius: 99px; white-space: nowrap; }
+.grade.platinum { color: #06222e; background: var(--plat); }
+.grade.gold { color: #241a00; background: var(--gold); }
+.grade.silver { color: #1c1e24; background: var(--silver); }
+.grade.bronze { color: #2a1400; background: var(--bronze); }
+.empty { color: var(--muted); background: var(--panel); border: 1px dashed var(--line); border-radius: var(--radius); padding: 16px; }
+.detail-col { position: sticky; top: 64px; }
+.detail {
+  background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; box-shadow: 0 8px 30px rgba(0, 0, 0, .35);
+}
+.detail-kicker { margin: 0 0 2px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.detail h2 { margin: 0 0 2px; font-size: 22px; line-height: 1.2; }
+.detail-meta { margin: 0 0 2px; color: var(--muted); font-size: 13.5px; }
+.detail-sources-line { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+.detail-sources-line strong { color: var(--accent2); }
+.detail-desc { margin: 0 0 8px; font-style: italic; color: var(--ink); }
+.detail-flags { margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.detail-guide { white-space: pre-wrap; font-size: 14.5px; }
+.detail-sources { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+.detail-sources strong { color: var(--ink); }
+.detail-sources a { display: block; margin-top: 3px; word-break: break-all; }
+.detail-earned { display: flex; gap: 8px; align-items: center; margin-top: 14px; font-weight: 700; cursor: pointer; }
+.detail-earned input { width: 18px; height: 18px; accent-color: var(--accent2); }
+.roadmap, .missables, .sources { max-width: 1240px; margin: 0 auto; padding: 10px 24px; scroll-margin-top: 110px; }
+.roadmap h2, .missables h2, .sources h2 { font-size: 24px; margin: 18px 0 6px; }
+.roadmap-intro { color: var(--muted); margin: 0 0 12px; }
+.stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.stage { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.stage h3 { margin: 0 0 2px; font-size: 17px; color: var(--accent2); }
+.stage-time { margin: 0 0 8px; color: var(--faint); font-size: 13px; font-weight: 700; }
+.stage p:last-child { margin: 0; font-size: 14.5px; }
+.stage-count { font-weight: 700; color: var(--gold); }
+.missables { background: #2a1a08; border: 1px solid #6b4a12; border-radius: var(--radius); }
+.missables p { font-size: 15px; }
+.missables strong { color: var(--danger); }
+.sources ul { margin: 0; padding-left: 20px; color: var(--muted); }
+.sources li { margin-bottom: 4px; }
+footer { max-width: 1240px; margin: 0 auto; padding: 18px 24px 32px; color: var(--faint); font-size: 13px; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .detail-col { position: static; }
+  .stages { grid-template-columns: 1fr; }
+  h1 { font-size: 30px; }
+}

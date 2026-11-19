@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI Platinum Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero" id="top">
+  <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; works offline</p>
+  <h1>Leonida Trophy Guide</h1>
+  <p class="tagline">Every one of the 55 official trophies — a guide with cited sources, a checklist that remembers your progress, a roadmap to the platinum, and the missables flagged.</p>
+  <p class="facts" id="facts">55 trophies &middot; 1 platinum &middot; 2 gold &middot; 6 silver &middot; 46 bronze &middot; 0 online &middot; about 200 hours to platinum (PowerPyx)</p>
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-line"><span id="progressText">0 of 55 earned</span><span id="progressPct">0%</span></div>
+    <div class="bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
+    <p class="grade-counts" id="gradeCounts"></p>
+  </div>
+</header>
+
+<nav class="controls" id="controls" aria-label="Tracker controls">
+  <input id="search" type="search" placeholder="Search trophies by name or guide…" aria-label="Search trophies">
+  <div class="kind-filters" id="kindFilters" role="group" aria-label="Filter by kind">
+    <button type="button" data-kind="all" class="active">All 55</button>
+    <button type="button" data-kind="story">Story</button>
+    <button type="button" data-kind="missable">Missable</button>
+    <button type="button" data-kind="collectibles">Collectibles</button>
+    <button type="button" data-kind="activities">Activities</button>
+    <button type="button" data-kind="online">Online</button>
+  </div>
+  <label class="field">Grade
+    <select id="grade">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="check"><input id="spoilers" type="checkbox"> Hide story spoilers</label>
+  <label class="check"><input id="earnedOnly" type="checkbox"> Earned only</label>
+  <button id="exportBtn" type="button">Export progress</button>
+  <label class="import-btn">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
+  <button id="resetBtn" type="button" class="quiet">Reset</button>
+</nav>
+
+<main class="layout">
+  <section class="list-col" aria-label="Trophy checklist">
+    <p class="list-note" id="listNote"></p>
+    <div id="trophyList" class="trophy-list"></div>
+    <p class="empty" id="emptyNote" hidden>No trophies match these filters. Try another kind or grade — or clear the search.</p>
+    <p class="empty" id="onlineNote" hidden>There are no online trophies: all 55 unlock in single-player (PowerPyx, 0 online trophies). Nothing to track here — the whole list is offline.</p>
+  </section>
+  <aside class="detail-col" aria-label="Trophy guide">
+    <div class="detail" id="detailPane">
+      <p class="detail-kicker">Trophy guide</p>
+      <h2 id="detailName">Pick a trophy</h2>
+      <p class="detail-meta" id="detailMeta"></p>
+      <p class="detail-sources-line" id="detailSourcesLine"></p>
+      <p class="detail-desc" id="detailDesc"></p>
+      <p class="detail-flags" id="detailFlags"></p>
+      <div class="detail-guide" id="detailGuide"></div>
+      <div class="detail-sources" id="detailSources"></div>
+      <label class="detail-earned"><input id="detailCheck" type="checkbox"> Earned</label>
+    </div>
+  </aside>
+</main>
+
+<section class="roadmap" id="roadmap" aria-label="Roadmap to the platinum">
+  <h2>Roadmap to the platinum — Vice Got a Price!</h2>
+  <p class="roadmap-intro">Built from the official descriptions and PowerPyx&rsquo;s roadmap (difficulty 4/10, about 200 hours, one playthrough, no mission replay, cheats disable trophies). The story takes 60&ndash;80 hours; the 100% checklist about 100 more; cleanup about 10.</p>
+  <div class="stages">
+    <article class="stage" id="stage1">
+      <h3>Stage 1 &middot; Play the story</h3>
+      <p class="stage-time">Chapters 1&ndash;5 &middot; 60&ndash;80 hours</p>
+      <p>Finish all five chapters and the named story missions. Every chapter and mission trophy pops automatically — none of them can be missed. On the way, try each activity type once, scan vehicles and study animals, and do the Chapter 1 meditation (see Missables). <span class="stage-count" id="stageCount1"></span></p>
+    </article>
+    <article class="stage" id="stage2">
+      <h3>Stage 2 &middot; The 100% checklist</h3>
+      <p class="stage-time">After the story &middot; about 100 hours</p>
+      <p>After the credits the checklist opens under Progress &gt; Stats &gt; 100% Completion. It is lenient — closer to 60% true completion: 200 of 277 vehicles scanned, 100 of 255 animals studied, any 70 of 80 challenges, 100 optional missions, 300 stunts, all 8 bank vaults, all 39 gang operations. Nothing here is missable. <span class="stage-count" id="stageCount2"></span></p>
+    </article>
+    <article class="stage" id="stage3">
+      <h3>Stage 3 &middot; Strangers &amp; cleanup</h3>
+      <p class="stage-time">Free-roam &middot; about 10 hours</p>
+      <p>Finish the character questlines (Andy, Kenton, Billy, Randy, Tyrone, Bret), the 8 Strangers &amp; Freaks strands, the money and property trophies, and the five guides still marked unconfirmed at launch. Then the platinum pops. <span class="stage-count" id="stageCount3"></span></p>
+    </article>
+  </div>
+</section>
+
+<section class="missables" id="missables" aria-label="Missable trophies">
+  <h2>Missables — read this first</h2>
+  <p><strong>Only one trophy is potentially missable: Positive Mental Attitude.</strong> Its first meditation, at Jason&rsquo;s house in Chapter 1, can only be done in Chapter 1 — after the mission Down to Earth, talk to Lucia in the kitchen in the morning, follow her to the balcony and accept. It is still unconfirmed whether that one counts toward the trophy, but do it to be safe. (PowerPyx)</p>
+  <p>There is <strong>no mission replay</strong> and no New Game+, so keep a manual save at the start and end of each chapter — the game offers 15 manual save slots plus one autosave (PowerPyx). Optional missions and some quest givers disappear for a while, but every trophy-related character comes back later, so nothing else locks you out of the platinum. <strong>Cheats disable trophies and saving</strong>, so leave them off for a trophy run.</p>
+  <p id="missableList"></p>
+</section>
+
+<section class="sources" id="sources" aria-label="Sources">
+  <h2>Sources</h2>
+  <p>Names, descriptions and grades are the official list as PlayStation publishes it, as listed by Exophase and cross-checked with PSNProfiles (the two agree on every name, description and grade). Every guide above is written in our own words for this guide and names its sources; where a trophy&rsquo;s exact trigger was not yet confirmed at launch, the guide says so instead of guessing.</p>
+  <ul id="sourceList"></ul>
+</section>
+
+<footer>
+  <p>Leonida Trophy Guide — an independent, offline fan guide. Not affiliated with Rockstar Games; no Rockstar logo, artwork or game screenshots are used. Trophy names and descriptions are shown as PlayStation publishes them. Guides cite PowerPyx, Exophase, PSNProfiles, Output Lag and Planet GTA 6.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
